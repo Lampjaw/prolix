@@ -8,7 +8,13 @@ A procedural generation library for 3D terrain environments.
 prolix.heightmap
 
 USAGE- heightmap.create(SIZE, SEED)
-SIZE must be a value that's a power of two. SEED is any four digit number.
+SIZE is any integer that's a power of two.
+SEED is any integer or word combination.
+Returns a type double SIZE x SIZE array
+
+	heightmap.preview(LANDSCAPE)
+LANDSCAPE is any type double nxn array where n is a power of two
+Creates a grayscale image in the running directory of the heightmap generated.
 
 heightmap uses a diamond-square algorithm to generate a natural looking landscape across a grid. 
 
