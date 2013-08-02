@@ -1,0 +1,27 @@
+PROLIX
+---------------
+
+A procedural generation library for 3D terrain environments.
+
+---------------
+
+prolix.heightmap
+
+USAGE- heightmap.create(SIZE, SEED)
+SIZE must be a value that's a power of two. SEED is any four digit number.
+
+heightmap uses a diamond-square algorithm to generate a natural looking landscape across a grid. 
+
+----------------------------
+
+TODO
+heightmap
+-Refine heightmap. Add landscape features and more robust seeding utility.
+-Implement the option to feed edge data so heightmap can generate adjacent terrain.
+
+trees?
+vegetation?
+rivers?
+streets?
+cities?
+
