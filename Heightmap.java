@@ -2,23 +2,26 @@ package prolix;
 
 import java.util.Random;
 
-
-public class Heightmap {
-	double[][] heightmap;
+public class Heightmap extends World {	
+	private double[][] heightmap;
+	public static int size;
 	
-	public Heightmap(int size, String seed, int type) {
-		heightmap = create(size, seed, type);
+	public Heightmap(int size, int type) {
+		this.size = size;
+		heightmap = create(size, type);
 	}
 	
 	public double[][] getHeightmap() {
 		return heightmap;
 	}
 
-	private static double[][] create(int x,String strngSeed, int type) {		
+	private double[][] create(int x, int type) {		
 		if(x < 2 || (x & (x - 1)) != 0)
-			throw new Error("Size is not a power of two");		
+			throw new Error("Size is not a power of two");	
 		
 		System.out.print("Creating heightmap...\t\t");
+		
+		Random generator = new Random(super.seed);
 		
 		double[][] landscape = new double[x+1][x+1];
 		
@@ -27,9 +30,6 @@ public class Heightmap {
 				landscape[n][k] = -999;
 			}
 		}
-		
-		long seed = strngSeed.hashCode();
-		Random generator = new Random(seed);
 		
 		landscape[0][0] = generator.nextInt(300) - 150;
 		landscape[x][0] = generator.nextInt(300) - 150;
