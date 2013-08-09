@@ -1,22 +1,27 @@
 PROLIX
 ---------------
 
-A procedural generation library for 3D terrain environments.
+A procedural generation library for 3D terrain environment.
 
 ---------------
 
-prolix.heightmap
+prolix.World
 
-USAGE- heightmap.create(SIZE, SEED)
-SIZE is any integer that's a power of two.
-SEED is any integer or word combination.
-Returns a type double SIZE x SIZE array
+Declaration- new World(int SIZE, String SEED, int TYPE);
 
-	heightmap.preview(LANDSCAPE)
-LANDSCAPE is any type double nxn array where n is a power of two
-Creates a grayscale image in the running directory of the heightmap generated.
+int SIZE is any integer that's a power of two.
+String SEED is any integer or word combination.
+int TYPE does not yet work.
 
-heightmap uses a diamond-square algorithm to generate a natural looking landscape across a grid. 
+USAGE:
+World.renderGrayscale();
+	Saves a png image in runtime folder of a grayscale version of the heightmap
+World.render2D();
+	Saves a png image in runtime folder of a theoretical colorized environmental version of the heightmap
+World.renderContours(int SCOPE,boolean LAND,boolean SEA);
+	int SCOPE is the step between contours.
+	boolean LAND and boolean SEA are to specify to ignore contours greater or less than sea level.
+	Saves a png image in runtime folder of a contour map version of the heightmap.
 
 ----------------------------
 
