@@ -112,7 +112,7 @@ public class MapMaker extends World {
 					
 				} else {
 					if(hm[y][x] < deepSea)	{
-						c = new int[]{27, 112, 250 - 1 * (int) hm[y][x] * -1}; }	//Deep water
+						c = new int[]{27, 112 - 1 * (int) hm[y][x] * -1, 250 - 1 * (int) hm[y][x] * -1}; }	//Deep water
 					else if(hm[y][x] < shallows) 	{ 
 						c = new int[]{27, 224, 224}; }								//Shallow water
 					else if(hm[y][x] < beach) 	{ 
@@ -123,6 +123,21 @@ public class MapMaker extends World {
 						c = new int[]{163 + 2 * ((int) hm[y][x] - plains), 181 + 2* ((int) hm[y][x] - plains), 165 + 2 * ((int) hm[y][x] - plains)}; }	//Stone
 					else 					{ 
 						c = new int[]{240, 240, 240}; }								//Snow
+					
+					if(c[0] > 255)
+						c[0] = 255;
+					else if(c[0] < 0)
+						c[0] = 0;
+					
+					if(c[1] > 255)
+						c[1] = 255;
+					else if(c[1] < 0)
+						c[1] = 0;
+					
+					if(c[2] > 255)
+						c[2] = 255;
+					else if(c[2] < 0)
+						c[2] = 0;
 				
 					buffer[(0 + 3  * (x + y * sz))] = (byte) c[0]; //Red channel
 					buffer[(1 + 3  * (x + y * sz))] = (byte) c[1]; //Green channel

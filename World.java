@@ -21,14 +21,14 @@ public class World {
 		System.out.println("Done");
 	}
 	
-	public static void add(int generator, int arg1, int arg2) {
+	public void add(int generator, int arg1, int arg2) {
 		if(generator == Prolix.PG_HEIGHTMAP)
 			heightmap = new Heightmap(arg1, arg2);
 		else
 			throw new Error("Not a valid add");			
 	}
 	
-	public static void add(int generator, int arg1, int arg2, int arg3) {
+	public void add(int generator, int arg1, int arg2, int arg3) {
 		if(generator == Prolix.PG_TREEMAP)
 			treemap = new Treemap(arg1, arg2, arg3);
 		else if(generator == Prolix.PG_VEGMAP)

@@ -13,8 +13,8 @@ public class Vegmap extends World {
 		if(upBound < lowBound)
 			throw new Error("The upper bound must be greater than the lower bound");
 		
-		if(density < 1 || density > 40)
-			throw new Error("Vegmap density must be between 1 and 40");
+		if(density < 0 || density > 100)
+			throw new Error("Vegmap density must be between 0 and 100");
 		
 		vegmap = create(lowBound, upBound, density);
 	}
@@ -22,7 +22,18 @@ public class Vegmap extends World {
 	private boolean[][] create(int lB, int uB, int d) {
 		System.out.print("Creating vegmap...\t\t");
 		
-		vegCount = super.heightmap.size * d;
+		int possiblePoints = 0;
+		for(int k = 0; k < super.heightmap.size; k++) {
+			for(int h = 0; h < super.heightmap.size; h++) {
+				double focus = super.heightmap.getHeightmap()[k][h];
+				
+				if(focus >= lB && focus <= uB)
+					possiblePoints++;
+			}	
+		}
+		
+		vegCount =(int) ((double) possiblePoints * (d / 100.0));
+		
 		boolean[][] map = new boolean[super.heightmap.size + 1][super.heightmap.size + 1];
 		double[][] hm = super.heightmap.getHeightmap();
 		
