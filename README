@@ -4,24 +4,31 @@ PROLIX
 A procedural generation library for 3D terrain environment.
 
 ---------------
+USAGE
 
-prolix.World
+Create a world object (i.e. World myWorld = new World(SEED) where SEED is any string or integer.
 
-Declaration- new World(int SIZE, String SEED, int TYPE);
+Generators may be added to the world such as a heightmap, treemap, or vegmap.(i.e. myWorld.add(GEN, ARG1,...)
+.add(Prolix.PG_HEIGHTMAP, SIZE, TYPE);
+.add(Prolix.PG_TREEMAP, LOWER BOUND, UPPER BOUND, DENSITY);
+.add(PRolix.PG_VEGMAP, LOWER BOUND, UPPER BOUND, DENSITY);
 
-int SIZE is any integer that's a power of two.
-String SEED is any integer or word combination.
-int TYPE does not yet work.
+int SIZE: Any integer that's a power of two.
+int TYPE: Currently does nothing.
+int LOWER BOUND: the lowest elevation for the object to possibly exist
+int UPPER BOUND: the highest elevation for the object to possibly exist
+int DENSITY: The percentage of possible areas to be covered.
 
-USAGE:
-World.renderGrayscale();
-	Saves a png image in runtime folder of a grayscale version of the heightmap
-World.render2D();
-	Saves a png image in runtime folder of a theoretical colorized environmental version of the heightmap
-World.renderContours(int SCOPE,boolean LAND,boolean SEA);
-	int SCOPE is the step between contours.
-	boolean LAND and boolean SEA are to specify to ignore contours greater or less than sea level.
-	Saves a png image in runtime folder of a contour map version of the heightmap.
+To preview your world try:
+.renderGrayscale(); -Creates a grayscale image of the heightmap. Darker is lower. Brighter is higher.
+.render2D(); -Creates a theoretical "satellite photograph" of the area using preset bounds for layers.
+.renderContours(SCALE, SHOW LAND, SHOW SEA); -Creates a contour map with the specified values.
+
+int SCALE is the steps between contour lines.
+boolean SHOW LAND is if you want contours shown for elevations above 0.
+boolean SHOW SEA is if you want contours shown for elevations below 0.
+
+All preview options save an image file in the runtime folder.
 
 ----------------------------
 
